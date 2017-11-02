@@ -9,6 +9,9 @@ from glob import glob
 from Utilities import dynamicImport
 
 class Database(object):
+    """
+    Database is used to update data in database by executing webscraping modules.
+    """
     def __init__(self):
         self.root     = os.path.dirname(os.path.abspath(__file__))
         self.database = os.path.join(self.root,'Sqlite3.db')
@@ -28,6 +31,12 @@ class Database(object):
         
     
     def insert(self,module):
+        """
+        Creates an instance of modules and uses attributes to populate fields in
+        database. Then tries to create new table if one does not already exist. 
+        Finally, will try to execute module to acquire data and then populate in
+        database.
+        """
         instance = module.Website()
         schema = instance.__dict__
         table  = schema.pop('table')
