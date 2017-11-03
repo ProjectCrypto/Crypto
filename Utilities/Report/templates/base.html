@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>{{ title.upper() }}</title>
+    </head>
+    <header>
+        <h1>{{ title.upper() }}</h1>
+    </header>
+    <body> 
+        {% block content %}{% endblock %}
+    </body>
+</html>
+
+<style>
+    p {
+        max-width: 80%;
+        padding: 1rem 1rem;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    header h1 {
+        text-align:center;
+/*        font-family: “times new roman”, Times, serif;*/
+        font-size: 40px;
+        text-align: center;
+        text-shadow: 2px 4px 3px rgba(0,0,0,0.3);
+    }
+
+    body { 
+        margin-bottom: 90px;
+    }
+
+/*TABLE FORMAT*/
+
+
+
+    img {
+        width: 100%; 
+        margin: auto;
+    }
+
+    {% for section in sections %}
+        {% if 'style' in section %}
+            .default{{ loop.index }} p{
+                color:{{section[‘style’].color }};
+            }
+        {% endif %}
+    {% endfor %}
+ 
+<script>
+    function toggleClass(el,className){
+        if (el.className.indexOf(className) >= 0 {
+            el.className = el.className.replace(className,"")
+        }else {
+            el.className += className;
+        }
+    };
+</script>
