@@ -12,8 +12,8 @@ from Utilities import dynamicImport
 class Main(object):
     def __init__(self,args):
         self.args   = args
-        self.output = args.output
         self.root   = os.path.dirname(os.path.abspath(__file__))  
+        self.output = self.createOutput(args.output)
         
         self.database = self.checkDatabase(args)
         
@@ -42,7 +42,12 @@ class Main(object):
             
         return database
 
+    def createOutput(self,output):
+        output = os.path.join(output,'output')
+        if not os.path.exists(output):
+            os.mkdir(output)
             
+        return output
 
     def execute(self,query):
         """

@@ -30,6 +30,9 @@ class Analysis(object):
         plot1 = os.path.join(parent.output,'plot1.png')
         plt.savefig(plot1, bbox_inches='tight',transparent=True)
         
+        
+        
+        
         text = """
         Welcome to Report! An API to help mitigate the tasks in presenting
         your analysis. Add sections with header or tables and plots. I cant
