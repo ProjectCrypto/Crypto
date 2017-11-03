@@ -1,10 +1,10 @@
 
 import os
-from jinja2 import Environment, FilseSystemLoader
+from jinja2 import Environment, FileSystemLoader
 
-root = os.path.abspath(os.path.dirname(__file__))
+root = os.path.dirname(os.path.abspath(__file__))  
  
-Class Report(object):
+class Report(object):
     def __init__(self, path, name):
         self.name = name
         self.path = path
@@ -15,43 +15,44 @@ Class Report(object):
    
     def add(self, **content):
         style={}
-        if 'table' in contents:
-            contents['table'] = self.table(contents.get('table'))
+        if 'table' in content:
+            content['table'] = self.table(content.get('table'))
 
-        if 'size' in contents:
-            style['size'] = contents.pop('size')
+        if 'size' in content:
+            style['size'] = content.pop('size')
 
-        if 'color' in contents:
+        if 'color' in content:
             style['color'] = contents.pop('color')
 
-        if 'font' in contents:
-            style['font'] = contents.pop('font')
+        if 'font' in content:
+            style['font'] = content.pop('font')
 
         if 'style':
-            contents['style'] = style
+            content['style'] = style
+
+            
+        self.sections.append(content)
 
 
-        self.sections.append(contents)
 
+    def create(self):
+        environment = Environment(loader = FileSystemLoader(os.path.join(root,'templates')))
+        template = environment.get_template('section.html')
+        output = template.render(sections = self.sections, title = self.name)
 
-
-    def create(self)
-        environment = Envionment(loader = FileSystemLoader(os.path.join(root,'templates')))
-        template = environment.get_template(‘section.html’)
-        ouput = template.render(sections = self.sections, title = self.name)
-
-        with open(self.html,’w’) as f :
+        with open(self.html,'w') as f :
             f.write(output)
 
 
 
     def table(self,data):
-        environment = Envionment(loader = FileSystemLoader(os.path.join(root,'templates')))
-        template = environment.get_template(‘table.html’)
-        ouput = template.render(sections = self.sections, title = self.name)
+        environment = Environment(loader = FileSystemLoader(os.path.join(root,'templates')))
+        template = environment.get_template('tables.html')
+        output = template.render(columns = data.columns, 
+                                rows    = data.values
+                               )
 
-        with open(self.html,’w’) as f :
-            f.write(output)
+        return output
                             
                             
                             

@@ -11,8 +11,9 @@ from Utilities import dynamicImport
 
 class Main(object):
     def __init__(self,args):
-        self.args = args
-        self.root = os.path.dirname(os.path.abspath(__file__))  
+        self.args   = args
+        self.output = args.output
+        self.root   = os.path.dirname(os.path.abspath(__file__))  
         
         self.database = self.checkDatabase(args)
         

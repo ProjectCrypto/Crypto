@@ -1,19 +1,26 @@
 {% extends 'base.html' %}
 {% block content %}
-    {% if 'style' in section %} <div class = ‘default{{ loop.index }}”>
-    {% else %} <div>
-    Endif
+    {% for section in sections %}
+        {% if 'style' in section %} <div class = "default{{ loop.index }}">
+        {% else %} <div>
+        {% endif %}
 
-    {% if ‘header’ in section $}
-    <h1>{{ section[‘header’] }}</h1>
-    If text
-    <p>text
-    If plot
-    <img src = “{{section[plot]}}>
+        {% if 'header' in section %}
+            <h1>{{ section['header'] }}</h1>
+        {% endif %}
 
-    If table
-    {{section[‘table’]
+        {% if 'text' in section %}
+            <p>{{ section['text'] }}</p>
+        {% endif %}
 
-    </div>
-    {}
-    {}
+        {% if 'plot' in section %}
+            <img src = "{{ section['plot'] }}">
+        {% endif %}
+
+        {% if 'table' in section %}
+            {{ section['table'] }}
+        {% endif %}
+
+        </div>
+    {% endfor %}
+{% endblock %}

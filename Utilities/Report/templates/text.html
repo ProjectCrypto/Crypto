@@ -1,39 +1,65 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <title>{{ title.upper() }}</title>
-    </head>
-    <header>
-        <h1>{{ title.upper() }}</h1>
-    </header>
-    <body> 
-        {% block content %}{% endblock %}
-    </body>
-</html>
+
+
+
+<h1>Responstable <span>2.0</span> by <span>jordyvanraaij</span></h1>
+
+<table class="responstable">
+  
+  <tr>
+    <th>Main driver</th>
+    <th data-th="Driver details"><span>First name</span></th>
+    <th>Surname</th>
+    <th>Date of birth</th>
+    <th>Relationship</th>
+  </tr>
+  
+  <tr>
+    <td><input type="radio"/></td>
+    <td>Steve</td>
+    <td>Foo</td>
+    <td>01/01/1978</td>
+    <td>Policyholder</td>
+  </tr>
+  
+  <tr>
+    <td><input type="radio"/></td>
+    <td>Steffie</td>
+    <td>Foo</td>
+    <td>01/01/1978</td>
+    <td>Spouse</td>
+  </tr>
+  
+  <tr>
+    <td><input type="radio"/></td>
+    <td>Stan</td>
+    <td>Foo</td>
+    <td>01/01/1994</td>
+    <td>Son</td>
+  </tr>
+  
+  <tr>
+    <td><input type="radio"/></td>
+    <td>Stella</td>
+    <td>Foo</td>
+    <td>01/01/1992</td>
+    <td>Daughter</td>
+  </tr>
+  
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
 
 <style>
-    header h1 {
-        text-align:center;
-        font-size: 40px;
-        text-align: center;
-        text-shadow: 2px 4px 3px rgba(0,0,0,0.3);  
-    }
-/*
-img {
-    width:80%;
-    margin:auto;
-    text-align: center;
-    
-    }
-*/
-    
-    
-    img {
-            width:80%;
-    display: block;
-    margin: 0 auto;
-}
-    
 .responstable {
   margin: 1em 0;
   width: 100%;
@@ -119,26 +145,6 @@ h1 span {
   color: #167F92;
 }
 
-.responstable .selected, .responstable tbody .selected
-    {
-        background-color: #6ccbfb;
-        color: #fff;
-    }
-    
+
+
 </style>
-    
-
-<script>
-
-function toggleClass(el, className) {
-  if (el.className.indexOf(className) >= 0) {
-    el.className = el.className.replace(className,"");
-  }
-  else {
-    el.className  += className;
-  }
-}
-
-</script>
-    
-
