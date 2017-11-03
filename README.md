@@ -20,4 +20,4 @@
 
 
 # Directory Structure
-![](Notebooks/images/directoryTree.png)
+![](Notebooks/images/directroyTree.png)
