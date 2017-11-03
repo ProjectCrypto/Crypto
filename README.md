@@ -26,4 +26,5 @@
 - Dynamically add new modules to web scrape
 - Dynamically add new modules to perform analysis
 - Create quick html presentations using our `Report` API
+
 ![](Notebookds/images/sampleOutput.png)
