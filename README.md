@@ -26,5 +26,18 @@
 - Dynamically add new modules to web scrape
 - Dynamically add new modules to perform analysis
 - Create quick html presentations using our `Report` API
+  - Using `Report`
+    ``` from Utilities import Report
+        
+        report = Report(name = 'Something', path = '/to/output/')
+        
+        # Add a sections
+        report.add(header = 'Introduction', text = 'Something to say')
+        report.add(plot = '/path/to/image.png')
+        report.add(table = pd.DataFrame())
+        
+        # Finally create the report
+        report.create()
+  '''
 
 ![](Notebooks/images/sampleOutput.png)
