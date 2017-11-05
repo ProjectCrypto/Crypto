@@ -23,7 +23,7 @@ class Website(object):
         
     def execute(self):
         links = []
-        data = []
+        data  = []
         url   = 'https://www.cryptocoinsnews.com/'
 
         content = self.openLink(url)
@@ -36,6 +36,7 @@ class Website(object):
                 links.append((title,href))
 
             parsed = self.parseText(links)
+            
             if parsed:
                 data = parsed
 

@@ -1,7 +1,7 @@
 import re
 import pandas as pd
 import datetime
-import urllib
+import requests
 
 class Website(object):
     """
@@ -21,28 +21,35 @@ class Website(object):
         """
         #### CLEAN UP ####
         """
-        columns = [
-            'Date',
-            'Price'
-        ]
+        columns = ['Date',
+                   'Price']
         
         data  = pd.DataFrame(columns = columns)
         today = datetime.date.today()
         beginning = datetime.date(2010,07,17)
         request   = 'https://api.coindesk.com/charts/data?data=close&startdate={}&enddate={}&exchanges=bpi&dev=1&index=USD'.format(beginning,today)
         
-        apiData = urllib.urlopen(request).read()
+        content = self.openLink(request)
         
-        parsed = self.parseText(apiData)
-        if parsed:
-            data = pd.DataFrame(parsed,columns=columns)
-            data['Type']    = 'Bitcoin'
-            data['Unit']    = 'USD'
-            data['Site'] = 'CoinDesk'
+        if content:
+            parsed = self.parseText(content)
+            if parsed:
+                data = pd.DataFrame(parsed,columns=columns)
+                data['Type'] = 'Bitcoin'
+                data['Unit'] = 'USD'
+                data['Site'] = 'CoinDesk'
     
         return data
     
     
+    def openLink(self,link):
+        request = requests.get(link)
+        if request.status_code == 200:
+            content = request.text
+        else:
+            content = False
+            
+        return content
     
     
     def parseText(self,text):
