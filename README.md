@@ -40,4 +40,4 @@
         report.create()
   '''
 
-![](Notebooks/images/sampleOutput.png)
+![](Notebooks/images/sampleOutput2.png)
